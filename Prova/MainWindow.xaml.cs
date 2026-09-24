@@ -30,7 +30,7 @@ namespace Prova
             Button bt = new Button();
             bt.Width = 50;
             bt.Height = 150;
-            bt.FontSize = 15;
+            bt.FontSize = 30;
             bt.Background = Brushes.DarkGray;
             WrapPanel elMeuPanel = new WrapPanel();
 
