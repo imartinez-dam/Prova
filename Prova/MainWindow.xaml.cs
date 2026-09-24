@@ -28,25 +28,25 @@ namespace Prova
             this.Content = elMeuGrid;
 
             Button bt = new Button();
-            bt.Width = 50;
-            bt.Height = 150;
+            bt.Width = 75;
+            bt.Height = 200;
             bt.FontSize = 15;
             bt.Background = Brushes.DarkGray;
             WrapPanel elMeuPanel = new WrapPanel();
 
             TextBlock txt1 = new TextBlock();
             txt1.Text = "Hola";
-            txt1.Foreground = Brushes.Red;
+            txt1.Foreground = Brushes.Orange;
             elMeuPanel.Children.Add(txt1);
 
             TextBlock txt2 = new TextBlock();
             txt2.Text = "Adeu";
-            txt2.Foreground = Brushes.Yellow;
+            txt2.Foreground = Brushes.Green;
             elMeuPanel.Children.Add(txt2);
 
             TextBlock txt3 = new TextBlock();
             txt3.Text = "Andreu";
-            txt3.Foreground = Brushes.Green;
+            txt3.Foreground = Brushes.Pink;
             elMeuPanel.Children.Add(txt3);
 
             bt.Content = elMeuPanel;
