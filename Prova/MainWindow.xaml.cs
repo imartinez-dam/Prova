@@ -22,6 +22,9 @@ namespace Prova
     {
         public MainWindow()
         {
+
+            //CANVI DE PROVA 
+
             InitializeComponent();
 
             Grid elMeuGrid = new Grid();
