@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.IO;
 
 namespace Prova
 {
@@ -20,21 +22,26 @@ namespace Prova
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        //CANVI DE PROVA 
+
+           public MainWindow()
         {
-
-            //CANVI DE PROVA 
-
             InitializeComponent();
 
-            Grid elMeuGrid = new Grid();
-            this.Content = elMeuGrid;
+            StackPanel elMeuPanellPrincipal = new StackPanel();
+            elMeuPanellPrincipal.Orientation = Orientation.Horizontal;
 
+            this.Content = elMeuPanellPrincipal;
+
+
+            // Primer botó de prova 
             Button bt = new Button();
-            bt.Width = 50;
-            bt.Height = 150;
+            bt.Width = 250;
+            bt.Height = 50;
             bt.FontSize = 15;
             bt.Background = Brushes.DarkGray;
+            bt.Margin = new Thickness(10);
+
             WrapPanel elMeuPanel = new WrapPanel();
 
             TextBlock txt1 = new TextBlock();
@@ -54,7 +61,45 @@ namespace Prova
 
             bt.Content = elMeuPanel;
 
-            elMeuGrid.Children.Add(bt);
+            elMeuPanellPrincipal.Children.Add(bt);
+
+
+            // BOTÓ TIC TAC TOE
+            Button btTicTacToe = new Button();
+
+            btTicTacToe.Width = 150;
+            btTicTacToe.Height = 150;
+            btTicTacToe.FontSize = 18;
+            btTicTacToe.Content = "Jugar a TicTacToe";
+            btTicTacToe.Foreground = Brushes.White;
+            btTicTacToe.Margin = new Thickness(10);
+
+            ControlTemplate plantillaBoto = new ControlTemplate(typeof(Button));
+
+            FrameworkElementFactory border = new FrameworkElementFactory(typeof(Border));
+            border.SetValue(Border.BackgroundProperty, Brushes.DarkBlue);
+            border.SetValue(Border.CornerRadiusProperty, new CornerRadius(75));
+
+            FrameworkElementFactory contingut = new FrameworkElementFactory(typeof(ContentPresenter));
+            contingut.SetValue(ContentPresenter.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            contingut.SetValue(ContentPresenter.VerticalAlignmentProperty, VerticalAlignment.Center);
+
+            border.AppendChild(contingut);
+
+            plantillaBoto.VisualTree = border;
+
+            btTicTacToe.Template = plantillaBoto;
+            btTicTacToe.Click += (sender, e) =>
+            {
+                string ruta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"tictactoe.exe");
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = ruta,
+                    UseShellExecute = true
+                });
+            };
+            elMeuPanellPrincipal.Children.Add(btTicTacToe);
         }
     }
 }
